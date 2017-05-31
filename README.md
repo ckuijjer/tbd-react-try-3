@@ -9,7 +9,7 @@ This is the project we created during the presentation.
 
 ## Presentation
 
-* [tbd-react.pdf]
+* [PDF](tbd-react.pdf)
 
 ## Other tries 
 
