@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Image from './Image';
-import ImageGrid from './ImageGrid';
-import FullscreenImage from './FullscreenImage';
 import GalleryContainer from './GalleryContainer';
 
 class App extends Component {
