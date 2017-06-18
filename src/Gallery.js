@@ -1,36 +1,21 @@
 import React from 'react';
+import { Route, withRouter } from 'react-router';
 import ImageGrid from './ImageGrid';
 import FullscreenImage from './FullscreenImage';
 
-class Gallery extends React.Component {
-  constructor(props) {
-    super(props);
+const Gallery = ({ match, images, history }) => {
+  const renderFullscreenImage = ({ match }) => {
+    const image = images.filter(image => image.id === match.params.id)[0];
 
-    this.state = {
-      fullscreenImage: null,
-    };
-  }
+    return image ? <FullscreenImage src={image.original} onClick={history.goBack} /> : null;
+  };
 
-  handleClickImage = (image) => {
-    this.setState({
-      fullscreenImage: image
-    });
-  }
-
-  handleClickFullscreenImage = () => {
-    this.setState({
-      fullscreenImage: null
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <ImageGrid images={this.props.images} onClickImage={this.handleClickImage} />
-        { this.state.fullscreenImage && <FullscreenImage src={this.state.fullscreenImage} onClick={this.handleClickFullscreenImage} /> }
-      </div>
-    );
-  }
+  return (
+    <div>
+      <ImageGrid images={images} />
+      <Route path={`${match.url}/:id`} render={renderFullscreenImage} />
+    </div>
+  );
 }
 
-export default Gallery;
+export default withRouter(Gallery);

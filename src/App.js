@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import AppBar from './AppBar';
 import GalleryContainer from './GalleryContainer';
 
 class App extends Component {
@@ -20,11 +22,19 @@ class App extends Component {
     }
 
     return (
-      <div style={styles.container}>
-        <div style={styles.content}>
-          <GalleryContainer />
+      <Router>
+        <div>
+          <AppBar />
+          <div style={styles.container}>
+            <div style={styles.content}>
+              <Switch>
+                <Route path="/:subreddit" component={GalleryContainer} />
+                <Redirect from="/" to="/kittens" />
+              </Switch>
+          </div>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
