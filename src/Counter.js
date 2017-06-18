@@ -2,18 +2,7 @@ import React from 'react';
 import { createStore } from 'redux';
 import Button from './Button';
 
-const reducer = (state, action) => {
-  console.log('reducer', state, action);
-
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}
+import reducer, { increment, decrement } from './redux/counter';
 
 const store = createStore(reducer, 0);
 
@@ -32,8 +21,8 @@ export default class Counter extends React.Component {
     return (
       <CounterPresentational
         value={this.state.value}
-        onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-        onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+        onDecrement={() => store.dispatch(decrement())}
+        onIncrement={() => store.dispatch(increment())}
       />
     );
   }
