@@ -1,32 +1,8 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { connect } from 'react-redux';
 import Button from './Button';
 
-import reducer, { increment, decrement } from './redux/counter';
-
-const store = createStore(reducer, 0);
-
-export default class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { 
-      value: 0,
-    };
-
-    store.subscribe(() => this.setState({ value: store.getState() }));
-  };
-
-  render() {
-    return (
-      <CounterPresentational
-        value={this.state.value}
-        onDecrement={() => store.dispatch(decrement())}
-        onIncrement={() => store.dispatch(increment())}
-      />
-    );
-  }
-}
+import * as actions from './redux/counter';
 
 const CounterPresentational = ({ value, onDecrement, onIncrement }) => (
   <div style={styles.container}>
@@ -52,3 +28,14 @@ const styles = {
     margin: 8,
   }
 }
+
+const mapStateToProps = (state) => ({
+  value: state,
+});
+
+const mapDispatchToProps = {
+  onIncrement: () => actions.increment(),
+  onDecrement: () => actions.decrement(),
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterPresentational);
