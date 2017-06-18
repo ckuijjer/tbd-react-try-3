@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import AppBar from './AppBar';
 import GalleryContainer from './GalleryContainer';
+import Counter from './Counter';
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
           <div style={styles.container}>
             <div style={styles.content}>
               <Switch>
+                <Route path="/counter" component={Counter} />
                 <Route path="/:subreddit" component={GalleryContainer} />
                 <Redirect from="/" to="/kittens" />
               </Switch>
