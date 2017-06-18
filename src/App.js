@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory'
 
@@ -14,17 +15,16 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
     const rootReducer = combineReducers({
       counter,
       router: routerReducer
     });
 
+    const composeEnhancers = composeWithDevTools({ features: { persist: false } });
     const middleware = routerMiddleware(this.history);
 
     this.history = createHistory();
-    this.store = createStore(rootReducer, composeEnhancers(applyMiddleware(middleware)));
+    this.store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(middleware)));
   }
 
   render() {
