@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { createStore } from 'redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory'
 
-import reducer from './redux/counter';
+import counter from './redux/counter';
 import AppBar from './AppBar';
 import GalleryContainer from './GalleryContainer';
 import Counter from './Counter';
@@ -12,7 +14,17 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.store = createStore(reducer, 0,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+    const rootReducer = combineReducers({
+      counter,
+      router: routerReducer
+    });
+
+    const middleware = routerMiddleware(this.history);
+
+    this.history = createHistory();
+    this.store = createStore(rootReducer, composeEnhancers(applyMiddleware(middleware)));
   }
 
   render() {
@@ -34,7 +46,7 @@ class App extends Component {
 
     return (
       <Provider store={this.store}>
-        <Router>
+        <ConnectedRouter history={this.history}>
           <div>
             <AppBar />
             <div style={styles.container}>
@@ -44,10 +56,10 @@ class App extends Component {
                   <Route path="/:subreddit" component={GalleryContainer} />
                   <Redirect from="/" to="/kittens" />
                 </Switch>
-            </div>
+              </div>
             </div>
           </div>
-        </Router>
+        </ConnectedRouter>
       </Provider>
     );
   }

@@ -1,8 +1,8 @@
-const DECREMENT = '/app/counter/DECREMENT';
-const INCREMENT = '/app/counter/INCREMENT';
+const DECREMENT = 'app/counter/DECREMENT';
+const INCREMENT = 'app/counter/INCREMENT';
 
 // Reducer is exported as default
-export default (state, action) => {
+export default (state = 0, action) => {
   switch (action.type) {
     case DECREMENT:
       return state - 1;

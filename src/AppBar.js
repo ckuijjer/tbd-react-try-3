@@ -24,6 +24,7 @@ const AppBar = () => {
   return (
     <div style={styles.container}>
       <div style={styles.content}>
+        <Link to="/counter" style={styles.link}>counter</Link>
         { subreddits.map(subreddit => (
           <Link to={`/${subreddit}`} style={styles.link} key={subreddit}>/r/{subreddit}</Link>
         ))}

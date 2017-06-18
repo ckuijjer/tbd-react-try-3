@@ -4,7 +4,7 @@ import Button from './Button';
 
 import * as actions from './redux/counter';
 
-const CounterPresentational = ({ value, onDecrement, onIncrement }) => (
+const Counter = ({ value, onDecrement, onIncrement }) => (
   <div style={styles.container}>
     <div style={styles.text}>{value}</div>
     <div>
@@ -29,13 +29,13 @@ const styles = {
   }
 }
 
-const mapStateToProps = (state) => ({
-  value: state,
+const mapStateToProps = ({ counter }) => ({
+  value: counter,
 });
 
 const mapDispatchToProps = {
-  onIncrement: () => actions.increment(),
-  onDecrement: () => actions.decrement(),
+  onIncrement: actions.increment,
+  onDecrement: actions.decrement,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterPresentational);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
