@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.store = createStore(reducer, 0);
+    this.store = createStore(reducer, 0,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
   }
 
   render() {

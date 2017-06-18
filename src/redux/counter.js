@@ -3,8 +3,6 @@ const INCREMENT = '/app/counter/INCREMENT';
 
 // Reducer is exported as default
 export default (state, action) => {
-  console.log('reducer', state, action)
-
   switch (action.type) {
     case DECREMENT:
       return state - 1;
