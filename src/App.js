@@ -20,7 +20,7 @@ class App extends Component {
       router: routerReducer
     });
 
-    const composeEnhancers = composeWithDevTools({ features: { persist: false } });
+    const composeEnhancers = composeWithDevTools({});
     const middleware = routerMiddleware(this.history);
 
     this.history = createHistory();
