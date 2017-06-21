@@ -14,6 +14,7 @@ const Counter = ({ value, onDecrement, onIncrement }) => (
   </div>
 );
 
+// Counter styling
 const styles = {
   container: {
     display: 'flex',

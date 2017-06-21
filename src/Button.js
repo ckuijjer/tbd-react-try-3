@@ -4,6 +4,7 @@ const Button = ({ children, onClick = () => {}, style }) => (
   <button onClick={onClick} style={{ ...defaultStyle, ...style }}>{ children }</button>
 );
 
+// Button styling
 const defaultStyle = {
   fontSize: 24,
   lineHeight: '40px',
