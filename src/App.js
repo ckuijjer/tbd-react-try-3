@@ -19,11 +19,12 @@ class App extends Component {
       counter,
       router: routerReducer
     });
+    
+    this.history = createHistory();  
 
     const composeEnhancers = composeWithDevTools({});
     const middleware = routerMiddleware(this.history);
 
-    this.history = createHistory();
     this.store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(middleware)));
   }
 
