@@ -7,7 +7,7 @@ const Image = ({ src, onClick = () => {} }) => {
   };
 
   return (
-    <div src={src} style={style} onClick={() => onClick(src)} />
+    <div src={src} style={style} onClick={onClick} />
   );
 }
 

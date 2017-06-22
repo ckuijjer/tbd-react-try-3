@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import Image from './Image';
 
-const ImageGrid = ({ images, onClickImage = () => {} }) => {
+const ImageGrid = ({ images, match }) => {
   const style = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
@@ -11,12 +12,14 @@ const ImageGrid = ({ images, onClickImage = () => {} }) => {
   return (
     <div style={style}>
       {
-        images.map(image => {
-          return <Image src={image} onClick={onClickImage} />
-        })
+        images.map((image) => (
+          <Link to={`${match.url}/${image.id}`} key={image.id}>
+            <Image src={image.thumbnail}/>
+          </Link>
+        ))
       }
     </div>
   )
 }
 
-export default ImageGrid;
+export default withRouter(ImageGrid);
