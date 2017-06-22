@@ -3,7 +3,7 @@ import { Route, withRouter } from 'react-router';
 import ImageGrid from './ImageGrid';
 import FullscreenImage from './FullscreenImage';
 
-const Gallery = ({ match, images, history }) => {
+const Gallery = ({ images, match, history }) => {
   const renderFullscreenImage = ({ match }) => {
     const image = images.filter(image => image.id === match.params.id)[0];
 
