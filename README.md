@@ -9,7 +9,9 @@ This is the project we created during the presentation.
 
 ## Presentation
 
-* [PDF](tbd-react.pdf)
+* [First talk PDF](tbd-react.pdf)
+* [Second talk PDF](tbd-react-102.pdf) - we got up to the first slide about _react-router_
+
 
 ## Other tries 
 
