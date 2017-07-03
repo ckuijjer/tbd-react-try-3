@@ -1,3 +1,9 @@
+// kitty.json
+https://kitten-thumbnails-decrnrdbv546.runkit.sh/
+
+// runkit kitty
+https://runkit.com/ckuijjer/kitten-thumbnails
+
 // App style
 const styles = {
   container: {
@@ -19,4 +25,25 @@ const styles = {
 const style = {
   background: `url('${src}') center / cover`,
   paddingTop: '100%'
+};
+
+// FullScreenImage style
+const styles = {
+  container: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  content: {
+    flex: 1,
+    maxWidth: 768,
+    padding: 16,
+    boxSizing: 'border-box',
+  },
 };
