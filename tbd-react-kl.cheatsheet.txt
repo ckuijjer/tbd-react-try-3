@@ -1,0 +1,22 @@
+// App style
+const styles = {
+  container: {
+    backgroundColor: '#eee',
+    display: 'flex',
+    justifyContent: 'center',
+    minHeight: '100vh',
+  },
+  content: {
+    backgroundColor: '#fff',
+    flex: 1,
+    maxWidth: 768,
+    padding: 16,
+    boxSizing: 'border-box',
+  },
+}
+
+// Image style
+const style = {
+  background: `url('${src}') center / cover`,
+  paddingTop: '100%'
+};
