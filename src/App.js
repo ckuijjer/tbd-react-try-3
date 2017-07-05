@@ -17,7 +17,7 @@ class App extends Component {
         padding: 16,
         boxSizing: 'border-box',
       },
-    }
+    };
 
     return (
       <div style={styles.container}>
