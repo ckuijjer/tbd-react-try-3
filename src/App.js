@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   ConnectedRouter,
   routerReducer,
-  routerMiddleware
+  routerMiddleware,
 } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
@@ -21,7 +21,7 @@ class App extends Component {
 
     const rootReducer = combineReducers({
       counter,
-      router: routerReducer
+      router: routerReducer,
     });
 
     this.history = createHistory();
@@ -32,7 +32,7 @@ class App extends Component {
     this.store = createStore(
       rootReducer,
       {},
-      composeEnhancers(applyMiddleware(middleware))
+      composeEnhancers(applyMiddleware(middleware)),
     );
   }
 
@@ -42,15 +42,15 @@ class App extends Component {
         backgroundColor: '#eee',
         display: 'flex',
         justifyContent: 'center',
-        minHeight: '100vh'
+        minHeight: '100vh',
       },
       content: {
         backgroundColor: '#fff',
         flex: 1,
         maxWidth: 768,
         padding: 16,
-        boxSizing: 'border-box'
-      }
+        boxSizing: 'border-box',
+      },
     };
 
     return (
