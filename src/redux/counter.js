@@ -1,5 +1,5 @@
-const DECREMENT = 'app/counter/DECREMENT';
-const INCREMENT = 'app/counter/INCREMENT';
+const DECREMENT = "app/counter/DECREMENT";
+const INCREMENT = "app/counter/INCREMENT";
 
 // Reducer is exported as default
 export default (state = 0, action) => {
@@ -11,7 +11,7 @@ export default (state = 0, action) => {
     default:
       return state;
   }
-}
+};
 
 // Action creators are exported
 export const decrement = () => ({
@@ -21,4 +21,3 @@ export const decrement = () => ({
 export const increment = () => ({
   type: INCREMENT
 });
-
