@@ -11,23 +11,30 @@ class Gallery extends React.Component {
     };
   }
 
-  handleClickImage = (image) => {
+  handleClickImage = image => {
     this.setState({
-      fullscreenImage: image
+      fullscreenImage: image,
     });
-  }
+  };
 
   handleClickFullscreenImage = () => {
     this.setState({
-      fullscreenImage: null
+      fullscreenImage: null,
     });
-  }
+  };
 
   render() {
     return (
       <div>
-        <ImageGrid images={this.props.images} onClickImage={this.handleClickImage} />
-        { this.state.fullscreenImage && <FullscreenImage src={this.state.fullscreenImage} onClick={this.handleClickFullscreenImage} /> }
+        <ImageGrid
+          images={this.props.images}
+          onClickImage={this.handleClickImage}
+        />
+        {this.state.fullscreenImage &&
+          <FullscreenImage
+            src={this.state.fullscreenImage}
+            onClick={this.handleClickFullscreenImage}
+          />}
       </div>
     );
   }

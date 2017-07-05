@@ -10,13 +10,11 @@ const ImageGrid = ({ images, onClickImage = () => {} }) => {
 
   return (
     <div style={style}>
-      {
-        images.map(image => {
-          return <Image src={image} onClick={onClickImage} />
-        })
-      }
+      {images.map(image => {
+        return <Image src={image} onClick={onClickImage} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default ImageGrid;

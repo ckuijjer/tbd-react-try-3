@@ -28,7 +28,7 @@ const FullscreenImage = ({ src, onClick = () => {} }) => {
         <Image src={src} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default FullscreenImage;

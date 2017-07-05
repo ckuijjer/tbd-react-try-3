@@ -7,27 +7,33 @@ const Counter = ({ value = 0, onDecrement, onIncrement }) => {
     container: {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     text: {
       fontSize: 72,
-      color: '#333'
+      color: '#333',
     },
     button: {
       margin: 8,
-    }
-  }
+    },
+  };
 
   return (
     <div style={styles.container}>
-      <div style={styles.text}>{ value }</div>      
+      <div style={styles.text}>
+        {value}
+      </div>
       <div>
-        <Button style={styles.button} onClick={onDecrement}>-</Button>
-        <Button style={styles.button} onClick={onIncrement}>+</Button>
+        <Button style={styles.button} onClick={onDecrement}>
+          -
+        </Button>
+        <Button style={styles.button} onClick={onIncrement}>
+          +
+        </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 class CounterContainer extends React.Component {
   constructor(props) {
@@ -35,19 +41,25 @@ class CounterContainer extends React.Component {
 
     this.state = {
       value: 0,
-    }
+    };
   }
 
   decrement = () => {
-    this.setState({ value: this.state.value - 1});
-  }
+    this.setState({ value: this.state.value - 1 });
+  };
 
   increment = () => {
-    this.setState({ value: this.state.value + 1});
-  }  
+    this.setState({ value: this.state.value + 1 });
+  };
 
   render() {
-    return <Counter value={this.state.value} onDecrement={this.decrement} onIncrement={this.increment} />
+    return (
+      <Counter
+        value={this.state.value}
+        onDecrement={this.decrement}
+        onIncrement={this.increment}
+      />
+    );
   }
 }
 

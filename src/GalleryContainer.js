@@ -18,12 +18,18 @@ class GalleryContainer extends Component {
   }
 
   getImages() {
-    return fetch(`https://www.reddit.com/r/${SUBREDDIT}/hot.json?raw_json=1&limit=24`)
+    return fetch(
+      `https://www.reddit.com/r/${SUBREDDIT}/hot.json?raw_json=1&limit=24`,
+    )
       .then(response => response.json())
       .then(response => {
         return response.data.children
           .map(child => {
-            const resolutions = _.get(child, 'data.preview.images[0].resolutions', [])
+            const resolutions = _.get(
+              child,
+              'data.preview.images[0].resolutions',
+              [],
+            );
             return resolutions
               .filter(resolution => resolution.width === 320)
               .map(resolution => resolution.url)[0];
@@ -31,14 +37,12 @@ class GalleryContainer extends Component {
           .filter(thumbnail => thumbnail !== undefined);
       })
       .then(images => {
-        this.setState({ images })
-      })
+        this.setState({ images });
+      });
   }
 
   render() {
-    return (
-      <Gallery images={this.state.images} />
-    );
+    return <Gallery images={this.state.images} />;
   }
 }
 

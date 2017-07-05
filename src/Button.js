@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Button = ({ children, style, onClick = () => {} }) => (
-  <button style={{ ...defaultStyle, ...style }} onClick={onClick}>{ children }</button>
-);
+const Button = ({ children, style, onClick = () => {} }) =>
+  <button style={{ ...defaultStyle, ...style }} onClick={onClick}>
+    {children}
+  </button>;
 
 // Button styling
 const defaultStyle = {
@@ -17,4 +18,4 @@ const defaultStyle = {
   paddingRight: 24,
 };
 
-export default Button
+export default Button;
