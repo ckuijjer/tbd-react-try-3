@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import Button from "./Button";
+import React from 'react';
+import { connect } from 'react-redux';
+import Button from './Button';
 
-import * as actions from "./redux/counter";
+import * as actions from './redux/counter';
 
 const Counter = ({ value, onDecrement, onIncrement }) =>
   <div style={styles.container}>
@@ -21,13 +21,13 @@ const Counter = ({ value, onDecrement, onIncrement }) =>
 
 const styles = {
   container: {
-    display: "flex",
-    flexDirection: "column", // Counter styling
-    alignItems: "center"
+    display: 'flex',
+    flexDirection: 'column', // Counter styling
+    alignItems: 'center'
   },
   text: {
     fontSize: 72,
-    color: "#333"
+    color: '#333'
   },
   button: {
     margin: 8

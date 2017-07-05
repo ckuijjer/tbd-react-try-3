@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import _ from "lodash";
-import Gallery from "./Gallery";
+import React, { Component } from 'react';
+import _ from 'lodash';
+import Gallery from './Gallery';
 
 class GalleryContainer extends Component {
   constructor(props) {
@@ -35,9 +35,9 @@ class GalleryContainer extends Component {
         return response.data.children
           .map(child => {
             return {
-              id: _.get(child, "data.id"),
-              original: _.get(child, "data.preview.images[0].source.url"),
-              thumbnail: _.get(child, "data.preview.images[0].resolutions", [])
+              id: _.get(child, 'data.id'),
+              original: _.get(child, 'data.preview.images[0].source.url'),
+              thumbnail: _.get(child, 'data.preview.images[0].resolutions', [])
                 .filter(resolution => resolution.width === 320)
                 .map(resolution => resolution.url)[0]
             };

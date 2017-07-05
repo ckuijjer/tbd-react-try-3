@@ -1,7 +1,7 @@
-import React from "react";
-import { Route, withRouter } from "react-router";
-import ImageGrid from "./ImageGrid";
-import FullscreenImage from "./FullscreenImage";
+import React from 'react';
+import { Route, withRouter } from 'react-router';
+import ImageGrid from './ImageGrid';
+import FullscreenImage from './FullscreenImage';
 
 const Gallery = ({ images, match, history }) => {
   const renderFullscreenImage = ({ match }) => {

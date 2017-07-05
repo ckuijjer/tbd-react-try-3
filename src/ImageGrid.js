@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import Image from "./Image";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import Image from './Image';
 
 const ImageGrid = ({ images, match }) => {
   const style = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr",
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: 16
   };
 
