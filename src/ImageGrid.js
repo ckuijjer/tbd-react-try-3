@@ -11,7 +11,13 @@ const ImageGrid = ({ images, onClickImage = () => {} }) => {
   return (
     <div style={style}>
       {images.map(image => {
-        return <Image src={image} onClick={onClickImage} />;
+        return (
+          <Image
+            src={image.thumbnail}
+            onClick={() => onClickImage(image)}
+            key={image.id}
+          />
+        );
       })}
     </div>
   );

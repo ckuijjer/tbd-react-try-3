@@ -32,7 +32,7 @@ class Gallery extends React.Component {
         />
         {this.state.fullscreenImage &&
           <FullscreenImage
-            src={this.state.fullscreenImage}
+            image={this.state.fullscreenImage}
             onClick={this.handleClickFullscreenImage}
           />}
       </div>

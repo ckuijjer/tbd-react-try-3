@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import GalleryContainer from './GalleryContainer';
 
 class App extends Component {
@@ -20,11 +26,16 @@ class App extends Component {
     };
 
     return (
-      <div style={styles.container}>
-        <div style={styles.content}>
-          <GalleryContainer />
+      <Router>
+        <div style={styles.container}>
+          <div style={styles.content}>
+            <Switch>
+              <Route path="/:subreddit" component={GalleryContainer} />
+              <Redirect from="/" to="/kitty" />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

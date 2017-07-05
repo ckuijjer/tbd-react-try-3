@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from './Image';
 
-const FullscreenImage = ({ src, onClick = () => {} }) => {
+const FullscreenImage = ({ image, onClick = () => {} }) => {
   const styles = {
     container: {
       position: 'fixed',
@@ -25,7 +25,7 @@ const FullscreenImage = ({ src, onClick = () => {} }) => {
   return (
     <div style={styles.container} onClick={onClick}>
       <div style={styles.content}>
-        <Image src={src} />
+        <Image src={image.original} />
       </div>
     </div>
   );
