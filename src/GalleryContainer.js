@@ -16,6 +16,15 @@ class GalleryContainer extends Component {
     this.getImages(subreddit);
   }
 
+  componentDidUpdate({ match }) {
+    const subreddit = this.props.match.params.subreddit;
+    const prevSubreddit = match.params.subreddit;
+
+    if (subreddit !== prevSubreddit) {
+      this.getImages(subreddit);
+    }
+  }
+
   getImages(subreddit) {
     return fetch(
       `https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1&limit=24`,

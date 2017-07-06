@@ -5,7 +5,11 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+import { MuiThemeProvider } from 'material-ui/styles';
+
 import GalleryContainer from './GalleryContainer';
+import Navigation from './Navigation';
+import Counter from './Counter';
 
 class App extends Component {
   render() {
@@ -14,7 +18,8 @@ class App extends Component {
         backgroundColor: '#eee',
         display: 'flex',
         justifyContent: 'center',
-        minHeight: '100vh',
+        minHeight: 'calc(100vh - 64px)',
+        marginTop: 64,
       },
       content: {
         backgroundColor: '#fff',
@@ -26,16 +31,22 @@ class App extends Component {
     };
 
     return (
-      <Router>
-        <div style={styles.container}>
-          <div style={styles.content}>
-            <Switch>
-              <Route path="/:subreddit" component={GalleryContainer} />
-              <Redirect from="/" to="/kitty" />
-            </Switch>
+      <MuiThemeProvider>
+        <Router>
+          <div>
+            <Route path="/:subreddit" component={Navigation} />
+            <div style={styles.container}>
+              <div style={styles.content}>
+                <Switch>
+                  <Route path="/counter" component={Counter} />
+                  <Route path="/:subreddit" component={GalleryContainer} />
+                  <Redirect from="/" to="/kitty" />
+                </Switch>
+              </div>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </MuiThemeProvider>
     );
   }
 }

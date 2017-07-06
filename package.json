@@ -4,9 +4,13 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
+    "material-ui": "next",
+    "material-ui-icons": "^1.0.0-alpha.19",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^2.1.2",
