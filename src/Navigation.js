@@ -7,20 +7,9 @@ import Divider from 'material-ui/Divider';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import MenuIcon from 'material-ui-icons/Menu';
-import Badge from 'material-ui/Badge';
-import Cake from 'material-ui-icons/Cake';
-import { Link } from 'react-router-dom';
+import CounterBadge from './CounterBadge';
 
 import subreddits from './subreddits';
-
-const CounterBadge = () =>
-  <Link to="/counter">
-    <IconButton color="contrast">
-      <Badge color="accent" badgeContent={0}>
-        <Cake />
-      </Badge>
-    </IconButton>
-  </Link>;
 
 export default class Navigation extends React.Component {
   constructor(props) {
