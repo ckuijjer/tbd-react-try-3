@@ -6,12 +6,26 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { MuiThemeProvider } from 'material-ui/styles';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import GalleryContainer from './GalleryContainer';
 import Navigation from './Navigation';
 import Counter from './Counter';
+import counter from './redux/counter';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    const rootReducer = combineReducers({
+      counter,
+    });
+
+    this.store = createStore(rootReducer, {}, devToolsEnhancer());
+  }
+
   render() {
     const styles = {
       container: {
@@ -31,22 +45,24 @@ class App extends Component {
     };
 
     return (
-      <MuiThemeProvider>
-        <Router>
-          <div>
-            <Route path="/:subreddit" component={Navigation} />
-            <div style={styles.container}>
-              <div style={styles.content}>
-                <Switch>
-                  <Route path="/counter" component={Counter} />
-                  <Route path="/:subreddit" component={GalleryContainer} />
-                  <Redirect from="/" to="/kitty" />
-                </Switch>
+      <Provider store={this.store}>
+        <MuiThemeProvider>
+          <Router>
+            <div>
+              <Route path="/:subreddit" component={Navigation} />
+              <div style={styles.container}>
+                <div style={styles.content}>
+                  <Switch>
+                    <Route path="/counter" component={Counter} />
+                    <Route path="/:subreddit" component={GalleryContainer} />
+                    <Redirect from="/" to="/kitty" />
+                  </Switch>
+                </div>
               </div>
             </div>
-          </div>
-        </Router>
-      </MuiThemeProvider>
+          </Router>
+        </MuiThemeProvider>
+      </Provider>
     );
   }
 }
