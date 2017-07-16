@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
-import { MuiThemeProvider } from 'material-ui/styles';
-import { createStore, combineReducers } from 'redux';
+  ConnectedRouter,
+  routerReducer,
+  routerMiddleware,
+} from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { MuiThemeProvider } from 'material-ui/styles';
 
 import GalleryContainer from './GalleryContainer';
 import Navigation from './Navigation';
 import Counter from './Counter';
 import counter from './redux/counter';
+import reddit from './redux/reddit';
 
 class App extends Component {
   constructor(props) {
@@ -21,9 +24,20 @@ class App extends Component {
 
     const rootReducer = combineReducers({
       counter,
+      router: routerReducer,
+      reddit,
     });
 
-    this.store = createStore(rootReducer, {}, devToolsEnhancer());
+    this.history = createHistory();
+
+    const composeEnhancers = composeWithDevTools({});
+    const middlewares = [routerMiddleware(this.history), thunk];
+
+    this.store = createStore(
+      rootReducer,
+      {},
+      composeEnhancers(applyMiddleware(...middlewares))
+    );
   }
 
   render() {
@@ -47,7 +61,7 @@ class App extends Component {
     return (
       <Provider store={this.store}>
         <MuiThemeProvider>
-          <Router>
+          <ConnectedRouter history={this.history}>
             <div>
               <Route path="/:subreddit" component={Navigation} />
               <div style={styles.container}>
@@ -60,7 +74,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-          </Router>
+          </ConnectedRouter>
         </MuiThemeProvider>
       </Provider>
     );
